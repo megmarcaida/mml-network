@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateMmlIncomeBinariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('mml_income_binaries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->boolean('admin')->default(1);
-            $table->string('mobile');
-            $table->boolean('status');
-            $table->rememberToken();
+            $table->integer('userid');
+            $table->string('accountid');
+            $table->boolean('isPair');
+            $table->dateTime('dateentry');
+            $table->decimal('amount', 5, 2);
             $table->timestamps();
+            $table->boolean('status');
         });
     }
 
@@ -33,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('mml_income_binaries');
     }
 }
