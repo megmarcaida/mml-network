@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +20,19 @@ Route::get('/', function () {
     return Redirect::away('http://localhost/mml/');
 });
 
+
+Route::get('register/{sponsorid}', [
+  'uses' => 'Auth\RegisterController@getSponsor'
+]);
+
+Route::get('register', [
+  'as' => 'register',
+  'uses' => 'Auth\RegisterController@getSponsor'
+]);
+
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/dashboard', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
 });
 

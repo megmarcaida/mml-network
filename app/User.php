@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname','middlename','lastname','username', 'email','mobile', 'password','status'
     ];
 
     /**
@@ -30,5 +30,10 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->admin; // this looks for an admin column in your users table
+    }
+
+    public function phone()
+    {
+        return $this->hasMany('App\mml_accounts');
     }
 }
