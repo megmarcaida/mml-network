@@ -10,8 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('assets/js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -27,10 +25,11 @@
     <!--  Paper Dashboard core CSS    -->
     <link href="{{ asset('assets/css/paper-dashboard.css') }}" rel="stylesheet"/>
 
+    <!-- Main CSS -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="{{ asset('assets/css/demo.css') }}" rel="stylesheet" />
-
 
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -55,52 +54,69 @@
               </div>
 
               <ul class="nav">
-                  <li class="active">
-                      <a href="dashboard.html">
-                          <i class="ti-panel"></i>
-                          <p>Dashboard</p>
-                      </a>
+                  <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="ti-panel"></i>
+                        <p>Stats</p>
+                        </a>
+                        <ul class="dropdown-menu side-menu">
+                          <li><a href="home">Dashboard</a></li>
+                          <li><a href="direct">Directs</a></li>
+                          <li><a href="genealogy">Genealogy</a></li>
+                          <li><a href="#">Pass Up</a></li>
+                          <li><a href="#">Tables of Exit</a></li>
+                          <li><a href="binary-genealogy">Binary Genealogy</a></li>
+                          <li><a href="indirect">Indirects</a></li>
+                        </ul>
                   </li>
-                  <li>
-                      <a href="user.html">
-                          <i class="ti-user"></i>
-                          <p>User Profile</p>
-                      </a>
+                  <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="ti-tag"></i>
+                        <p>Products and Services</p>
+                        </a>
+                        <ul class="dropdown-menu side-menu">
+                          <li><a href="#">E-Loading</a></li>
+                          <li><a href="#">Data Entry</a></li>
+                          <li><a href="#">E-Books</a></li>
+                          <li><a href="#">Free SMS</a></li>
+                        </ul>
                   </li>
-                  <li>
-                      <a href="table.html">
-                          <i class="ti-view-list-alt"></i>
-                          <p>Table List</p>
-                      </a>
+                  <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="ti-money"></i>
+                        <p>E-Wallet</p>
+                        </a>
+                        <ul class="dropdown-menu side-menu">
+                          <li><a href="#">Add Wallet Funds</a></li>
+                          <li><a href="#">My Payments</a></li>
+                          <li><a href="#">Purchase</a></li>
+                          <li><a href="#">Code List</a></li>
+                          <li><a href="#">Mode of Payments</a></li>
+                          <li><a href="#">Conversion Center</a></li>
+                        </ul>
                   </li>
-                  <li>
-                      <a href="typography.html">
-                          <i class="ti-text"></i>
-                          <p>Typography</p>
-                      </a>
+                  <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="ti-wallet"></i>
+                        <p>Encashment</p>
+                        </a>
+                        <ul class="dropdown-menu side-menu">
+                          <li><a href="#">Settings</a></li>
+                          <li><a href="#">My Encashments</a></li>
+                          <li><a href="#">Encashment Request</a></li>
+                        </ul>
                   </li>
-                  <li>
-                      <a href="icons.html">
-                          <i class="ti-pencil-alt2"></i>
-                          <p>Icons</p>
-                      </a>
+                  <li class="dropdown">
+                        <a href="#">
+                              <i class="ti-desktop"></i>
+                        <p>Transaction History</p>
+                        </a>
                   </li>
-                  <li>
-                      <a href="maps.html">
-                          <i class="ti-map"></i>
-                          <p>Maps</p>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="notifications.html">
-                          <i class="ti-bell"></i>
-                          <p>Notifications</p>
-                      </a>
-                  </li>
+
           <li class="active-pro">
                       <a href="upgrade.html">
                           <i class="ti-export"></i>
-                          <p>Upgrade to Premium</p>
+                          <p>Upgrade Account</p>
                       </a>
                   </li>
               </ul>
@@ -122,7 +138,7 @@
                   <div class="collapse navbar-collapse">
                       <ul class="nav navbar-nav navbar-right">
                           <li>
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <a href="home">
                                   <i class="ti-panel"></i>
                                   <p>Stats</p>
                               </a>
@@ -146,11 +162,16 @@
 
                           <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                      <i class="ti-settings"></i>
-                                <p>Settings</p>
+                                      <i class="ti-user"></i>
+                                <p>{{  Auth::user()->firstname . ' ' .  Auth::user()->lastname }}</p>
                                 <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
+                                  <li><a href="#">Profile</a></li>
+                                  <li><a href="#">Account Activation</a></li>
+                                  <li><a href="#">Link Account</a></li>
+                                  <li><a href="#">System</a></li>
+                                  <li><a href="#">Help</a></li>
                                   <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -162,10 +183,6 @@
                                         @csrf
                                     </form>
                                   </li>
-                                  <li><a href="#">Notification 2</a></li>
-                                  <li><a href="#">Notification 3</a></li>
-                                  <li><a href="#">Notification 4</a></li>
-                                  <li><a href="#">Another notification</a></li>
                                 </ul>
                           </li>
                       </ul>

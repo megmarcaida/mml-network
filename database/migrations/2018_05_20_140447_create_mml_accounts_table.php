@@ -25,7 +25,7 @@ class CreateMmlAccountsTable extends Migration
             $table->integer('leftpv')->default(0);
             $table->integer('totaldirect')->default(0);
             $table->integer('rightGroup')->default(0);
-            $table->integer('lefttGroup')->default(0);
+            $table->integer('leftGroup')->default(0);
             $table->dateTime('datetomaintain');
             $table->dateTime('dateentry');
             $table->integer('isSeventhPair');

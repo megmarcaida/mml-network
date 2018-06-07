@@ -93,12 +93,14 @@ class RegisterController extends Controller
           'totaldirect' => 0,
           'rightGroup' => 0,
           'leftGroup' => 0,
-          'datetomaintain' => date("Y-m-d h:m:s"),
-          'dateentry' => date("Y-m-d h:m:s"),
+          'datetomaintain' => date("Y-m-d h:i:s"),
+          'dateentry' => date("Y-m-d h:i:s"),
           'isSeventhPair' => 0,
           'isUpgraded' => 0,
           'status' => 1
         ]);
+
+        return $user;
     }
 
     public function getSponsor(Request $request)
@@ -117,4 +119,23 @@ class RegisterController extends Controller
           return view('auth.register',['name' => $name, 'sponsor_id' => $sponsor_id]);
         }
     }
+
+    public function generateAccountNumber() {
+      $number = mt_rand(1000000000, 9999999999); // better than rand()
+
+      // call the same function if the barcode exists already
+      if (accountNumberExists($number)) {
+          return generateAccountNumber();
+      }
+
+      // otherwise, it's valid and can be used
+      return $number;
+    }
+
+    function accountNumberExists($number) {
+      // query the database and return a boolean
+      // for instance, it might look like this in Laravel
+      return mml_accounts::where('account_no','=',$number)->exists();
+  }
+
 }
