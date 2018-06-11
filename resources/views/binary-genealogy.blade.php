@@ -1,77 +1,127 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+<style media="screen">
+/*Now the CSS*/
+* {margin: 0; padding: 0;}
+.tree{
+  height: 500px;
+}
+.tree ul {
+padding-top: 20px;
+position: relative;
+transition: all 0.5s;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+}
+
+.tree li {
+float: left;
+text-align: center;
+list-style-type: none;
+position: relative;
+padding: 20px 10px 0 10px;
+
+transition: all 0.5s;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+content: '';
+position: absolute; top: 0; right: 50%;
+border-top: 1px solid #ccc;
+width: 50%; height: 20px;
+}
+.tree li::after{
+right: auto; left: 50%;
+border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+border-right: 1px solid #ccc;
+border-radius: 0 5px 0 0;
+-webkit-border-radius: 0 5px 0 0;
+-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+border-radius: 5px 0 0 0;
+-webkit-border-radius: 5px 0 0 0;
+-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+content: '';
+position: absolute; top: 0; left: 50%;
+border-left: 1px solid #ccc;
+width: 0; height: 20px;
+}
+
+.tree li a{
+border: 1px solid #ccc;
+padding: 5px 10px;
+text-decoration: none;
+color: #666;
+font-family: arial, verdana, tahoma;
+font-size: 16px;
+display: inline-block;
+
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+
+transition: all 0.5s;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul::before,
+.tree li a:hover+ul ul::before{
+border-color:  #94a0b4;
+}
+</style>
+<h3>Binary Genealogy</h3>
 <div class="row">
     <div class="col-lg-3 col-sm-6">
         <div class="card">
             <div class="content">
                 <div class="row">
                     <div class="col-xs-5">
-                        <div class="icon-big icon-warning text-center">
-                            <i class="ti-server"></i>
+                        <div class="icon-big icon-info text-center">
+                            <i class="ti-pin2"></i>
                         </div>
                     </div>
                     <div class="col-xs-7">
                         <div class="numbers">
-                            <p>Capacity</p>
-                            105GB
+                            Ads Here
                         </div>
-                    </div>
-                </div>
-                <div class="footer">
-                    <hr />
-                    <div class="stats">
-                        <i class="ti-reload"></i> Updated now
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="content">
-                <div class="row">
-                    <div class="col-xs-5">
-                        <div class="icon-big icon-success text-center">
-                            <i class="ti-wallet"></i>
-                        </div>
-                    </div>
-                    <div class="col-xs-7">
-                        <div class="numbers">
-                            <p>Revenue</p>
-                            $1,345
-                        </div>
-                    </div>
-                </div>
-                <div class="footer">
-                    <hr />
-                    <div class="stats">
-                        <i class="ti-calendar"></i> Last day
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="content">
-                <div class="row">
-                    <div class="col-xs-5">
-                        <div class="icon-big icon-danger text-center">
-                            <i class="ti-pulse"></i>
-                        </div>
-                    </div>
-                    <div class="col-xs-7">
-                        <div class="numbers">
-                            <p>Errors</p>
-                            23
-                        </div>
-                    </div>
-                </div>
-                <div class="footer">
-                    <hr />
-                    <div class="stats">
-                        <i class="ti-timer"></i> In the last hour
                     </div>
                 </div>
             </div>
@@ -83,94 +133,127 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="icon-big icon-info text-center">
-                            <i class="ti-twitter-alt"></i>
+                            <i class="ti-pin2"></i>
                         </div>
                     </div>
                     <div class="col-xs-7">
                         <div class="numbers">
-                            <p>Followers</p>
-                            +45
+                            Ads Here
                         </div>
                     </div>
                 </div>
-                <div class="footer">
-                    <hr />
-                    <div class="stats">
-                        <i class="ti-reload"></i> Updated now
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-info text-center">
+                            <i class="ti-pin2"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            Ads Here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-info text-center">
+                            <i class="ti-pin2"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            Ads Here
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="row">
 
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h4 class="title">Users Behavior</h4>
-                <p class="category">24 Hours performance</p>
+                <h4 class="title">Binary Genealogy</h4>
             </div>
             <div class="content">
-                <div id="chartHours" class="ct-chart"></div>
-                <div class="footer">
-                    <div class="chart-legend">
-                        <i class="fa fa-circle text-info"></i> Open
-                        <i class="fa fa-circle text-danger"></i> Click
-                        <i class="fa fa-circle text-warning"></i> Click Second Time
-                    </div>
-                    <hr>
-                    <div class="stats">
-                        <i class="ti-reload"></i> Updated 3 minutes ago
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Email Statistics</h4>
-                <p class="category">Last Campaign Performance</p>
-            </div>
-            <div class="content">
-                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
-                <div class="footer">
-                    <div class="chart-legend">
-                        <i class="fa fa-circle text-info"></i> Open
-                        <i class="fa fa-circle text-danger"></i> Bounce
-                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                    </div>
-                    <hr>
-                    <div class="stats">
-                        <i class="ti-timer"></i> Campaign sent 2 days ago
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card ">
-            <div class="header">
-                <h4 class="title">2015 Sales</h4>
-                <p class="category">All products including Taxes</p>
-            </div>
-            <div class="content">
-                <div id="chartActivity" class="ct-chart"></div>
-
-                <div class="footer">
-                    <div class="chart-legend">
-                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                    </div>
-                    <hr>
-                    <div class="stats">
-                        <i class="ti-check"></i> Data information certified
-                    </div>
-                </div>
+              <div class="tree">
+                <ul>
+              		<li>
+              			<a href="#"><i class="ti-user"></i>You <br><b> {{  Auth::user()->firstname . ' ' .  Auth::user()->lastname }} </b></a>
+              			<ul>
+                      <li>
+              					<a href="#"><i class="ti-close"></i> </a>
+              					<ul>
+                          <li>
+                            <a href="#"><i class="ti-close"></i> </a>
+                            <ul>
+                              <li>
+                                <a href="#"><i class="ti-close"></i> </a>
+                              </li>
+                              <li>
+                                <a href="#"><i class="ti-close"></i> </a>
+                              </li>
+                            </ul>
+                          </li>
+              						<li>
+              							<a href="#"><i class="ti-close"></i> </a>
+              							<ul>
+              								<li>
+              									<a href="#"><i class="ti-close"></i> </a>
+              								</li>
+              								<li>
+              									<a href="#"><i class="ti-close"></i> </a>
+              								</li>
+              							</ul>
+              						</li>
+              					</ul>
+              				</li>
+              				<li>
+              					<a href="#"><i class="ti-close"></i> </a>
+              					<ul>
+                          <li>
+                            <a href="#"><i class="ti-close"></i> </a>
+                            <ul>
+                              <li>
+                                <a href="#"><i class="ti-close"></i> </a>
+                              </li>
+                              <li>
+                                <a href="#"><i class="ti-close"></i> </a>
+                              </li>
+                            </ul>
+                          </li>
+              						<li>
+              							<a href="#"><i class="ti-close"></i> </a>
+              							<ul>
+              								<li>
+              									<a href="#"><i class="ti-close"></i> </a>
+              								</li>
+              								<li>
+              									<a href="#"><i class="ti-close"></i> </a>
+              								</li>
+              							</ul>
+              						</li>
+              					</ul>
+              				</li>
+              			</ul>
+              		</li>
+              	</ul>
+              </div>
             </div>
         </div>
     </div>

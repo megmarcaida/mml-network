@@ -81,9 +81,11 @@ class RegisterController extends Controller
             'status' => 1
         ]);
 
+        $accountNo = $this->generateAccountNumber();
+
         $account = mml_accounts::create([
           'userid' => $user->id,
-          'account_no' => "000000003",
+          'account_no' => $accountNo,
           'sponsor_id' => $data['sponsor_id'],
           'upline_id' => $data['upline_id'],
           'position' => 0,
@@ -121,10 +123,10 @@ class RegisterController extends Controller
     }
 
     public function generateAccountNumber() {
-      $number = mt_rand(1000000000, 9999999999); // better than rand()
+      $number = mt_rand(000000000, 999999999); // better than rand()
 
       // call the same function if the barcode exists already
-      if (accountNumberExists($number)) {
+      if ($this->accountNumberExists($number)) {
           return generateAccountNumber();
       }
 
@@ -132,7 +134,7 @@ class RegisterController extends Controller
       return $number;
     }
 
-    function accountNumberExists($number) {
+    public function accountNumberExists($number) {
       // query the database and return a boolean
       // for instance, it might look like this in Laravel
       return mml_accounts::where('account_no','=',$number)->exists();

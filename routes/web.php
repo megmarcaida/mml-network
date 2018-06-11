@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Income Module....
     Route::get('/direct', 'IncomeController@getDirects')->name('direct');
     Route::get('/genealogy', 'IncomeController@getGenealogy')->name('genealogy');
+    Route::get('/binary-genealogy', 'IncomeController@getBinaryGenealogy')->name('binary-genealogy');
     Route::get('/indirect', 'IncomeController@getIndirects')->name('indirect');
 
 });

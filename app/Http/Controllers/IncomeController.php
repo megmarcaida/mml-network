@@ -17,4 +17,8 @@ class IncomeController extends Controller
     public function getGenealogy(){
       return view('genealogy');
     }
+
+    public function getBinaryGenealogy(){
+      return view('binary-genealogy');
+    }
 }
