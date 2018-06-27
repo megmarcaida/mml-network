@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/binary-genealogy', 'IncomeController@getBinaryGenealogy')->name('binary-genealogy');
     Route::get('/indirect', 'IncomeController@getIndirects')->name('indirect');
 
+    //user profile module
+    Route::get('/profile', 'UsersController@index')->name('profile');
 });
 
 Route::group(['middleware' => ['auth','admin']], function () {

@@ -133,7 +133,7 @@
                           <span class="icon-bar bar2"></span>
                           <span class="icon-bar bar3"></span>
                       </button>
-                      <a class="navbar-brand" href="#">Dashboard</a>
+
                   </div>
                   <div class="collapse navbar-collapse">
                       <ul class="nav navbar-nav navbar-right">
@@ -167,7 +167,7 @@
                                 <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                  <li><a href="#">Profile</a></li>
+                                  <li><a href="profile">Profile</a></li>
                                   <li><a href="#">Account Activation</a></li>
                                   <li><a href="#">Link Account</a></li>
                                   <li><a href="#">System</a></li>

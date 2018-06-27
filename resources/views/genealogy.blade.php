@@ -197,54 +197,54 @@ border-color:  #94a0b4;
               			<a href="#"><i class="ti-user"></i>You <br><b> {{  Auth::user()->firstname . ' ' .  Auth::user()->lastname }} </b></a>
               			<ul>
                       <li>
-              					<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              					<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftSecond['account_no'] }}</b></a>
               					<ul>
                           <li>
-                            <a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+                            <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftLeftThird['account_no'] }}</b></a>
                             <ul>
                               <li>
-                                <a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftLeftLeftFourth['account_no'] }}</b></a>
                               </li>
                               <li>
-                                <a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftLeftRightFourth['account_no'] }}</b></a>
                               </li>
                             </ul>
                           </li>
               						<li>
-              							<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              							<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftRightThird['account_no'] }}</b></a>
               							<ul>
               								<li>
-              									<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftRightLeftFourth['account_no'] }}</b></a>
               								</li>
               								<li>
-              									<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftRightRightFourth['account_no'] }}</b></a>
               								</li>
               							</ul>
               						</li>
               					</ul>
               				</li>
               				<li>
-              					<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              					<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightSecond['account_no'] }}</b></a>
               					<ul>
                           <li>
-                            <a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+                            <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightLeftThird['account_no'] }}</b></a>
                             <ul>
                               <li>
-                                <a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightLeftLeftFourth['account_no'] }}</b></a>
                               </li>
                               <li>
-                                <a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightLeftRightFourth['account_no'] }}</b></a>
                               </li>
                             </ul>
                           </li>
               						<li>
-              							<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              							<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightRightThird['account_no'] }}</b></a>
               							<ul>
               								<li>
-              									<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightRightLeftFourth['account_no'] }}</b></a>
               								</li>
               								<li>
-              									<a href="#"><i class="ti-plus"></i> <b>Add</b></a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightRightRightFourth['account_no'] }}</b></a>
               								</li>
               							</ul>
               						</li>

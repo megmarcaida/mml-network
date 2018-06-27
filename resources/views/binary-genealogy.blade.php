@@ -107,7 +107,7 @@ background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
 border-color:  #94a0b4;
 }
 </style>
-<h3>Binary Genealogy</h3>
+<h3>Genealogy</h3>
 <div class="row">
     <div class="col-lg-3 col-sm-6">
         <div class="card">
@@ -188,7 +188,7 @@ border-color:  #94a0b4;
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h4 class="title">Binary Genealogy</h4>
+                <h4 class="title">Genealogy</h4>
             </div>
             <div class="content">
               <div class="tree">
@@ -197,54 +197,54 @@ border-color:  #94a0b4;
               			<a href="#"><i class="ti-user"></i>You <br><b> {{  Auth::user()->firstname . ' ' .  Auth::user()->lastname }} </b></a>
               			<ul>
                       <li>
-              					<a href="#"><i class="ti-close"></i> </a>
+              					<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftSecond['account_no'] }}</b></a>
               					<ul>
                           <li>
-                            <a href="#"><i class="ti-close"></i> </a>
+                            <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftLeftThird['account_no'] }}</b></a>
                             <ul>
                               <li>
-                                <a href="#"><i class="ti-close"></i> </a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftLeftLeftFourth['account_no'] }}</b></a>
                               </li>
                               <li>
-                                <a href="#"><i class="ti-close"></i> </a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftLeftRightFourth['account_no'] }}</b></a>
                               </li>
                             </ul>
                           </li>
               						<li>
-              							<a href="#"><i class="ti-close"></i> </a>
+              							<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftRightThird['account_no'] }}</b></a>
               							<ul>
               								<li>
-              									<a href="#"><i class="ti-close"></i> </a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftRightLeftFourth['account_no'] }}</b></a>
               								</li>
               								<li>
-              									<a href="#"><i class="ti-close"></i> </a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyLeftRightRightFourth['account_no'] }}</b></a>
               								</li>
               							</ul>
               						</li>
               					</ul>
               				</li>
               				<li>
-              					<a href="#"><i class="ti-close"></i> </a>
+              					<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightSecond['account_no'] }}</b></a>
               					<ul>
                           <li>
-                            <a href="#"><i class="ti-close"></i> </a>
+                            <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightLeftThird['account_no'] }}</b></a>
                             <ul>
                               <li>
-                                <a href="#"><i class="ti-close"></i> </a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightLeftLeftFourth['account_no'] }}</b></a>
                               </li>
                               <li>
-                                <a href="#"><i class="ti-close"></i> </a>
+                                <a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightLeftRightFourth['account_no'] }}</b></a>
                               </li>
                             </ul>
                           </li>
               						<li>
-              							<a href="#"><i class="ti-close"></i> </a>
+              							<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightRightThird['account_no'] }}</b></a>
               							<ul>
               								<li>
-              									<a href="#"><i class="ti-close"></i> </a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightRightLeftFourth['account_no'] }}</b></a>
               								</li>
               								<li>
-              									<a href="#"><i class="ti-close"></i> </a>
+              									<a href="#"><i class="ti-user"></i> <b>{{ $getGenealogyRightRightRightFourth['account_no'] }}</b></a>
               								</li>
               							</ul>
               						</li>
