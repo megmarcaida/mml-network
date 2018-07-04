@@ -35,6 +35,33 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
+
+
+    <!--   Core JS Files   -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <!-- i need it here -->
+    <!--  Notifications Plugin    -->
+    <script src="{{ asset('assets/js/bootstrap-notify.js') }}"></script>
+
+
+
+    <script type="text/javascript">
+
+    var notification = function(message){
+        $(document).ready(function(){
+
+            $.notify({
+                icon: 'ti-check',
+                message: message
+              },{
+                  type: 'success',
+                  timer: 4000
+              });
+
+        });
+      }
+    </script>
 </head>
 <body>
 
@@ -153,7 +180,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                   <li><a href="profile">Profile</a></li>
-                                  <li><a href="#">Account Activation</a></li>
+                                  <li><a href="activation">Account Activation</a></li>
                                   <li><a href="#">Link Account</a></li>
                                   <li><a href="#">System</a></li>
                                   <li><a href="#">Help</a></li>
@@ -219,9 +246,6 @@
 
 
 </body>
-<!--   Core JS Files   -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{{ asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="{{ asset('assets/js/bootstrap-checkbox-radio.js') }}"></script>
@@ -229,15 +253,24 @@
 <!--  Charts Plugin -->
 <script src="{{ asset('assets/js/chartist.min.js') }}"></script>
 
-<!--  Notifications Plugin    -->
-<script src="{{ asset('assets/js/bootstrap-notify.js') }}"></script>
-
-
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="{{ asset('assets/js/paper-dashboard.js') }}"></script>
 
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('assets/js/demo.js') }}"></script>
+<script type="text/javascript">
+function copyLink() {
+/* Get the text field */
+var copyText = document.getElementById("referral_link");
 
+/* Select the text field */
+copyText.select();
 
+/* Copy the text inside the text field */
+document.execCommand("copy");
+
+/* Alert the copied text */
+alert("Copied the text");
+}
+</script>
 </html>

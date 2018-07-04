@@ -58,6 +58,9 @@ class RegisterController extends Controller
             'mobile' => 'required|string|max:100',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'sponsor_id' => 'required|string|max:255',
+            'upline_id' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
         ]);
     }
 
@@ -69,6 +72,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $redirection = "login";
+
         $user = User::create([
             'firstname' => $data['firstname'],
             'middlename' => $data['middlename'],
@@ -83,12 +88,18 @@ class RegisterController extends Controller
 
         $accountNo = $this->generateAccountNumber();
 
+        if (!$this->checkIfPositionIsExist($data['upline_id'],$data['position'])) {
+            $position = $data['position'];
+        }else{
+            $position = 3;
+        }
+
         $account = mml_accounts::create([
           'userid' => $user->id,
           'account_no' => $accountNo,
           'sponsor_id' => $data['sponsor_id'],
           'upline_id' => $data['upline_id'],
-          'position' => 0,
+          'position' => $position,
           'pvpairs' => 0,
           'rightpv' => 0,
           'leftpv' => 0,
@@ -138,6 +149,11 @@ class RegisterController extends Controller
       // query the database and return a boolean
       // for instance, it might look like this in Laravel
       return mml_accounts::where('account_no','=',$number)->exists();
-  }
+    }
+
+    public function checkIfPositionIsExist($uplineId, $position){
+      // query the database and return a boolean
+      return mml_accounts::where('upline_id','=',$uplineId)->where('position','=',$position)->exists();
+    }
 
 }

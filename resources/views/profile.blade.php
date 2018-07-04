@@ -12,8 +12,8 @@
                     <div class="content">
                         <div class="author">
                           <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="..."/>
-                          <h4 class="title">Chet Faker<br />
-                             <a href="#"><small>@chetfaker</small></a>
+                          <h4 class="title">{{ $user['firstname'] . ' ' . $user['lastname'] }}<br />
+                             <a href="#"><small>{{ '@'. $user['username'] }}</small></a>
                           </h4>
                         </div>
                         <p class="description text-center">
@@ -43,6 +43,7 @@
                     </div>
                     <div class="content">
                         <ul class="list-unstyled team-members">
+                                  @foreach($accounts as $account)
                                     <li>
                                         <div class="row">
                                             <div class="col-xs-3">
@@ -51,9 +52,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-6">
-                                                DJ Khaled
+                                                {{ $account->firstname . ' ' . $account->lastname }}
                                                 <br />
-                                                <span class="text-muted"><small>Offline</small></span>
+                                                <span class="text-muted"><small>Account No. :{{ $account->account_no }}</small></span>
                                             </div>
 
                                             <div class="col-xs-3 text-right">
@@ -61,7 +62,8 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
+                                    @endforeach
+                                    <!-- <li>
                                         <div class="row">
                                             <div class="col-xs-3">
                                                 <div class="avatar">
@@ -96,7 +98,7 @@
                                                 <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                     </div>
                 </div>
@@ -104,51 +106,73 @@
             <div class="col-lg-8 col-md-7">
                 <div class="card">
                     <div class="header">
+                      @if ($error != '')
+                      <div class="alert alert-danger alert-with-icon" data-notify="container">
+                          <span data-notify="icon" class="ti-alert"></span>
+                          <span data-notify="message">{{ $error }}</span>
+                      </div>
+                      @endif
                         <h4 class="title">Edit Profile</h4>
                     </div>
                     <div class="content">
-                        <form>
+                        <form action="{{ route('update-profile') }}" method="post">
+                            @csrf
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Company</label>
-                                        <input type="text" class="form-control border-input" disabled placeholder="Company" value="Creative Code Inc.">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control border-input" placeholder="Username" value="michael23">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control border-input" placeholder="Email">
+                                        <label>Account No</label>
+                                        <input type="text" class="form-control border-input" disabled value="{{ $user['account_no'] }}">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control border-input" placeholder="Company" value="Chet">
+                                        <label>Firstname</label>
+                                        <input type="text" class="form-control border-input" placeholder="Company" name="firstname" value="{{ $user['firstname'] }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control border-input" placeholder="Last Name" value="Faker">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Middle Name</label>
+                                            <input type="text" class="form-control border-input" placeholder="Company" name="middlename" value="{{ $user['middlename'] }}">
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control border-input" placeholder="Last Name" name="lastname" value="{{ $user['lastname'] }}">
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="row">
+                                  <div class="col-md-4">
+                                      <div class="form-group">
+                                          <label>Username</label>
+                                          <input type="text" class="form-control border-input" placeholder="Username" name="username" value="{{ $user['username'] }}">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-group">
+                                          <label for="exampleInputEmail1">Email address</label>
+                                          <input type="email" class="form-control border-input" placeholder="Email" name="email" value="{{ $user['email'] }}">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-group">
+                                          <label>Mobile Number</label>
+                                          <input type="tel" class="form-control border-input" placeholder="Mobile Number" name="mobile" pattern="^(\+\d{1,3}[- ]?)?\d{9}$" required value="{{ $user['mobile'] }}">
+                                      </div>
+                                  </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control border-input" placeholder="Home Address" value="Melbourne, Australia">
+                                        <input type="text" class="form-control border-input" placeholder="Home Address" name="address" value="{{ $userInfo['address'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -157,19 +181,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>City</label>
-                                        <input type="text" class="form-control border-input" placeholder="City" value="Melbourne">
+                                        <input type="text" class="form-control border-input" placeholder="City" name="city" value="{{ $userInfo['city'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Country</label>
-                                        <input type="text" class="form-control border-input" placeholder="Country" value="Australia">
+                                        <input type="text" class="form-control border-input" placeholder="Country" name="country" value="{{ $userInfo['country'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Postal Code</label>
-                                        <input type="number" class="form-control border-input" placeholder="ZIP Code">
+                                        <input type="number" class="form-control border-input" name="postal_code" placeholder="Postal Code" value="{{ $userInfo['postal_code'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -178,10 +202,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>About Me</label>
-                                        <textarea rows="5" class="form-control border-input" placeholder="Here can be your description" value="Mike">Oh so, your weak rhyme
-You doubt I'll bother, reading into it
-I'll probably won't, left to my own devices
-But that's the difference in our opinions.</textarea>
+                                        <textarea rows="5" class="form-control border-input" name="about_me" placeholder="Here can be your description">{{ $userInfo['about_me'] }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -198,4 +219,11 @@ But that's the difference in our opinions.</textarea>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  var isExistMessage = "{{ $message }}";
+  if(isExistMessage){
+      notification("{{$message}}");
+  }
+
+</script>
 @endsection

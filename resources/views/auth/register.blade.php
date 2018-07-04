@@ -32,6 +32,18 @@
                             <!-- <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label> -->
 
                             <div class="col-md-12">
+                                <select id="position" placeholder="Position" type="text" class="form-control" name="position" value="{{ old('position') }}" autofocus>
+                                  <option value="">Select Position</option>
+                                  <option value="0">Left</option>
+                                  <option value="1">Right</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <!-- <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label> -->
+
+                            <div class="col-md-12">
                                 <input id="firstname" placeholder="First Name" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required autofocus>
 
                                 @if ($errors->has('firstname'))

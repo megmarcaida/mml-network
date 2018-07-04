@@ -19,7 +19,7 @@ class CreateMmlAccountsTable extends Migration
             $table->string('account_no', 20)->nullable();
             $table->string('sponsor_id', 20)->nullable();
             $table->string('upline_id', 20)->nullable();
-            $table->boolean('position')->default(0);
+            $table->boolean('position')->default(3);
             $table->boolean('pvpairs')->default(0);
             $table->integer('rightpv')->default(0);
             $table->integer('leftpv')->default(0);

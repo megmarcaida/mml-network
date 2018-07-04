@@ -42,6 +42,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     //user profile module
     Route::get('/profile', 'UsersController@index')->name('profile');
+    Route::post('update-profile', [
+      'as' => 'update-profile',
+      'uses' => 'UsersController@updateProfile'
+    ]);
+
+    //activation module
+    Route::get('/activation', 'AccountController@index')->name('activation');
 });
 
 Route::group(['middleware' => ['auth','admin']], function () {

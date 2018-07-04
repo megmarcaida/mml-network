@@ -107,7 +107,6 @@ background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
 border-color:  #94a0b4;
 }
 </style>
-<h3>Genealogy</h3>
 <div class="row">
     <div class="col-lg-3 col-sm-6">
         <div class="card">
